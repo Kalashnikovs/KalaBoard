@@ -1,0 +1,74 @@
+{
+	"name": "KalaBoard",
+	"version": "1.0.0",
+	"description": "KalaBoard Forum Software",
+	"main": "build/app.js",
+	"scripts": {
+		"start": "cross-env NODE_ENV=prod node build/app.js",
+		"start:devel": "concurrently npm:start:build npm:start:dev",
+		"start:build": "tsc -w",
+		"start:dev": "cross-env NODE_ENV=dev nodemon build/app.js",
+		"lint": "eslint ./src --fix --ext .ts",
+		"test": "cross-env NODE_ENV=test jest",
+		"test:watch": "cross-env NODE_ENV=test jest --watch --verbose --maxWorkers=1",
+		"test:coverage": "cross-env NODE_ENV=test jest --coverage"
+	},
+	"keywords": [
+		"KalaBoard",
+		"Kalashnikov",
+		"Forum",
+		"platform"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Kalashnikovs/KalaBoard.git"
+	},
+	"author": "Al Snake",
+	"license": "GPL-3",
+	"bugs": {
+		"url": "https://github.com/Kalashnikovs/KalaBoard/issues"
+	},
+	"homepage": "https://github.com/Kalashnikovs/KalaBoard#README.md",
+	"dependencies": {
+		"@sapphire/snowflake": "^3.2.2",
+		"app-root-path": "^3.0.0",
+		"bcryptjs": "^2.4.3",
+		"connect-mongodb-session": "^3.1.1",
+		"cookie-parser": "^1.4.6",
+		"csurf": "^1.11.0",
+		"dotenv": "^16.0.1",
+		"ejs": "^3.1.8",
+		"express": "^4.18.1",
+		"express-async-errors": "^3.1.1",
+		"express-flash": "^0.0.2",
+		"express-rate-limit": "^6.4.0",
+		"express-session": "^1.17.3",
+		"express-validator": "^6.14.1",
+		"mongoose": "^6.3.5",
+		"winston": "^3.7.2"
+	},
+	"devDependencies": {
+		"@babel/preset-env": "^7.16.11",
+		"@babel/preset-typescript": "^7.16.7",
+		"@types/app-root-path": "^1.2.4",
+		"@types/bcryptjs": "^2.4.2",
+		"@types/connect-mongodb-session": "^2.4.3",
+		"@types/cookie-parser": "^1.4.3",
+		"@types/csurf": "^1.11.2",
+		"@types/express": "^4.17.13",
+		"@types/express-flash": "^0.0.2",
+		"@types/express-session": "^1.17.4",
+		"@types/jest": "^27.4.0",
+		"@types/node": "^17.0.10",
+		"@types/supertest": "^2.0.11",
+		"@typescript-eslint/eslint-plugin": "^5.27.0",
+		"concurrently": "^7.0.0",
+		"cross-env": "^7.0.3",
+		"eslint": "^8.7.0",
+		"eslint-plugin-prettier": "^4.0.0",
+		"jest": "^27.4.7",
+		"nodemon": "^2.0.15",
+		"supertest": "^6.2.2",
+		"typescript": "^4.5.5"
+	}
+}

@@ -1,0 +1,14 @@
+# CONFIG
+.env
+config.json
+
+# Folders
+build
+.vscode
+node_modules
+logs
+coverage
+
+# TEMPORARY
+public/default
+views/default

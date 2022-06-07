@@ -1,4 +1,5 @@
 export interface ExtendedError extends Error {
-	status?: number;
-	errors?: any;
+    status?: number;
+    errors?: any;
+    redirect?: string;
 }

@@ -11,6 +11,7 @@ function setViewVariables() {
 
     ViewManager.setVariables('routes', {
         homeRoute: '/',
+        adminRoute: '/admin',
         tosRoute: '/tos',
         privacyRoute: '/privacypolicy',
         rulesRoute: '/forumrules',
@@ -27,6 +28,10 @@ function setViewVariables() {
 
     ViewManager.setVariables('/auth/login', {
         pageTitle: 'Login',
+    });
+
+    ViewManager.setVariables('/admin', {
+        pageTitle: 'Admin',
     });
 }
 

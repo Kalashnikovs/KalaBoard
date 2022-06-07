@@ -1,9 +1,11 @@
 import session from 'express-session';
+import { IUser } from '../interfaces/User';
+import { Snowflake } from './Snowflake';
 
 declare module 'express-session' {
     export interface SessionData {
-        user: { [key: string]: any };
-        userId: { [key: string]: any };
+        user: IUser;
+        userId: Snowflake;
         isAuthenticated: boolean;
     }
 }

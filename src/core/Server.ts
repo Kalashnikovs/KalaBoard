@@ -97,19 +97,23 @@ export class Server {
                 const status = err.status || 500;
                 const error = { message: err.message, errors: err.errors };
 
-                if (this.app.get('env') === 'dev')
+                if (this.app.get('env') === 'dev') {
                     Object.assign(error, {
                         stack: err.stack,
                         debug: err,
                     });
+                    Logger.error(err);
+                }
 
-                if (status === 422) {
-                    req.flash('InputError', err.errors);
+                if (status === 422 && err.errors) {
+                    let formerror = err.errors || [{ msg: error.message }];
+                    req.flash('InputError', formerror);
                     return res.redirect(req.originalUrl);
                 }
 
+                const redirect = err.redirect || req.originalUrl;
                 FlashActionAlert(req, 'error', err.message);
-                return res.redirect(req.originalUrl);
+                return res.redirect(redirect); // could lead to loop
             }
         );
     }

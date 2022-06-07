@@ -28,10 +28,20 @@ export class ViewManager {
         return val;
     }
 
-    static render(res: Response, path: string): void {
+    static hasVariables(key: string): boolean {
+        return this.variables.get(key) !== undefined;
+    }
+
+    static render(res: Response, path: string, vars?: object): void {
         const localVariables = this.getVariables('global');
         Object.assign(localVariables, this.getVariables('routes'));
-        Object.assign(localVariables, this.getVariables(res.req.originalUrl));
+        if (this.hasVariables(res.req.originalUrl))
+            Object.assign(
+                localVariables,
+                this.getVariables(res.req.originalUrl)
+            );
+        if (vars) Object.assign(localVariables, vars);
+
         res.render(this.get('theme') + '/' + path, localVariables);
     }
 }

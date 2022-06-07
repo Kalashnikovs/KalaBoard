@@ -1,10 +1,9 @@
 import express from 'express';
-import KalaRouter from '../apps/kalaboard/routes/KalaRouter';
-import AuthRouter from '../apps/auth/routes/AuthRouter';
-import AdminRouter from '../apps/admin/routes/AdminRouter';
+import AdminRoutes from './AdminRoutes';
 
 export default class Router {
     private static router: express.Router;
+    private static basePath = '';
 
     static getRouter(): express.Router {
         if (!Router.router) {
@@ -15,8 +14,6 @@ export default class Router {
     }
 
     private static registerLocalRoutes(): void {
-        Router.router.use(KalaRouter.getRouter());
-        Router.router.use(AuthRouter.getRouter());
-        Router.router.use(AdminRouter.getRouter());
+        Router.router.use(Router.basePath, AdminRoutes);
     }
 }

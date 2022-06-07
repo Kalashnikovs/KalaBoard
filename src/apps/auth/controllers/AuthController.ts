@@ -51,4 +51,12 @@ export class AuthController {
         FlashActionAlert(req, 'success', 'Login Successful!');
         res.redirect('/');
     }
+
+    static async postLogout(
+        req: Request,
+        res: Response,
+        next: NextFunction
+    ): Promise<void> {
+        req.session.destroy((err) => res.redirect('/login'));
+    }
 }
